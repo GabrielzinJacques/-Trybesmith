@@ -4,3 +4,8 @@ export interface IProduct {
   amount: string,
   orderId: number,
 }
+
+export interface ICreate {
+  name: string,
+  amount: string,
+}
