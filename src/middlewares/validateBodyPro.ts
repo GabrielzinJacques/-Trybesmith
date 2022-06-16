@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
-import { ICreate } from '../interfaces/productInterface';
 
 const schemaBody = Joi.object({
   name: Joi.required(),
@@ -18,14 +17,14 @@ export default class {
   private schemaValues = schemaValues;
 
   public validateBody = (req: Request, res: Response, next: NextFunction): void => {
-    const { name, amount } = req.body as ICreate;
+    const { name, amount } = req.body;
     const { error } = this.schemaBody.validate({ name, amount });
     if (error) next({ status: 400, message: error.message });
     next();
   };
 
   public validateValues = (req: Request, res: Response, next: NextFunction): void => {
-    const { name, amount } = req.body as ICreate;
+    const { name, amount } = req.body;
     const { error } = this.schemaValues.validate({ name, amount });
     if (error) next({ status: 422, message: error.message });
     next();
