@@ -1,13 +1,13 @@
-import { ResultSetHeader } from 'mysql2/promise';
+import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import connection from './connection';
 import { IProduct, ICreate } from '../interfaces/productInterface';
 
 export default class ProductModel {
-  public getAll = async (): Promise<IProduct[]> => {
-    const [results] = await connection.execute(
+  public getAll = async () => {
+    const [results] = await connection.execute<RowDataPacket[]>(
       'SELECT * FROM Trybesmith.Products',
     );
-    return results as IProduct[];
+    return results;
   };
 
   public create = async (product: ICreate): Promise<Omit<IProduct, 'orderId'>> => {

@@ -1,15 +1,15 @@
 import ProductModel from '../models/productModel';
-import { ICreate, IProduct } from '../interfaces/productInterface';
+import { ICreate } from '../interfaces/productInterface';
 
 export default class ProductService {
   private model = new ProductModel();
 
-  public getAll = async (): Promise<IProduct[]> => {
+  public getAll = async () => {
     const results = await this.model.getAll();
     return results;
   };
 
-  public create = async ({ name, amount }: ICreate): Promise<Omit<IProduct, 'orderId'>> => {
+  public create = async ({ name, amount }: ICreate) => {
     const newProduct = await this.model.create({ name, amount });
     return newProduct;
   };
