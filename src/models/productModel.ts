@@ -10,7 +10,14 @@ export default class ProductModel {
     return results;
   };
 
-  public create = async (product: ICreate): Promise<Omit<IProduct, 'orderId'>> => {
+  public getByOrder = async (id: number) => {
+    const [results] = await connection.execute<RowDataPacket[]>(
+      'SELECT * FROM Trybesmith.Products WHERE orderId=?', [id]
+    );
+    return results
+  } 
+
+  public create = async (product: ICreate) => {
     const [{ insertId }] = await connection
       .execute<ResultSetHeader>(`INSERT INTO Trybesmith.Products (name, amount)
     VALUES (?, ?)`, [product.name, product.amount]);
