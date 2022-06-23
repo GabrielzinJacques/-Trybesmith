@@ -1,6 +1,5 @@
-import { ResultSetHeader, RowDataPacket } from "mysql2";
-import { IOrders } from "../interfaces/ordersInterface";
-import connection from "./connection";
+import { RowDataPacket } from 'mysql2';
+import connection from './connection';
 
 export default class OrdersModel {
   public getOrders = async () => {
@@ -8,5 +7,5 @@ export default class OrdersModel {
       'SELECT * FROM Trybesmith.Orders',
     );
     return results;
-  }
+  };
 }

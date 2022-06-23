@@ -1,9 +1,9 @@
 import products from './products';
 import users from './users';
-import orders from './orders'
+import orders from './orders';
 
 export default {
   products,
   users,
-  orders
+  orders,
 };

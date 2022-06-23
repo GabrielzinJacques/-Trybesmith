@@ -1,6 +1,6 @@
 import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import connection from './connection';
-import { IProduct, ICreate } from '../interfaces/productInterface';
+import { ICreate } from '../interfaces/productInterface';
 
 export default class ProductModel {
   public getAll = async () => {
@@ -11,11 +11,10 @@ export default class ProductModel {
   };
 
   public getByOrder = async (id: number) => {
-    const [results] = await connection.execute<RowDataPacket[]>(
-      'SELECT * FROM Trybesmith.Products WHERE orderId=?', [id]
-    );
-    return results
-  } 
+    const [results] = await connection
+      .execute<RowDataPacket[]>('SELECT * FROM Trybesmith.Products WHERE orderId=?', [id]);
+    return results;
+  }; 
 
   public create = async (product: ICreate) => {
     const [{ insertId }] = await connection
