@@ -14,7 +14,7 @@ export default class OrdersService {
     // console.log("Orders:",orders);
     
     orders.forEach((_, index: number) => {
-      const productsId =  products[index].map((product) => product.id);
+      const productsId = products[index].map((product) => product.id);
       // console.log(productsId);
       orders[index].productsIds = productsId
     });
