@@ -30,6 +30,6 @@ Ele vai subir sua API na porta 3000
 
 # 🛠️ Construído com
 
-Express
-Node
-Sequelize
+* Express
+* Node
+* Sequelize
